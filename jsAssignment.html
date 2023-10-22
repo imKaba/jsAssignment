@@ -22,7 +22,7 @@
                     status: "APPROVED"
                 },
                 {
-                    id: 3, student: "Fleeur",
+                    id: 3, student: "Fleur",
                     query: "Permission to shoot film",
                     status: "DECLINED"
                 },
@@ -59,11 +59,15 @@
 
             // writing the tbody
             tbody = document.createElement('tbody')
-
-            queries.forEach(item => {
-                tr = createRow(item)
+            
+            // Using Do while  
+            let iteration = 0
+            do {
+                tr = createRow(queries[iteration])
                 tbody.appendChild(tr)
-            })
+                iteration++;
+            } while (iteration < queries.length);
+
 
             // We stick everything to table and after to the document 
             table.appendChild(thead)
@@ -75,11 +79,17 @@
 
         function createRow(item) {
             tr = document.createElement('tr')
-            Object.keys(item).forEach((key, ind) => {
+            
+            // Using While Loop
+            let i = 0
+            while (i < Object.keys(item).length) {
                 td = document.createElement('td')
-                td.textContent = item[key]
+                td.textContent = item[Object.keys(item)[i]]
+
+                // console.log(item[Object.keys(item)[i]])
                 tr.appendChild(td)
-            } )
+                i++;
+            }
             
             td = document.createElement('td')
             td.innerHTML = `
